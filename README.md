@@ -1,6 +1,9 @@
 # react-build-tools
 For Denver React meetup
 
+Presentation slide deck:
+https://docs.google.com/presentation/d/16u4-BQVLyGWsGGwrdRgkNKb5RzhRgFH1hJiZ8CXqZFE/
+
 # Comparisons
 
 Comparisons were run on my local Windows 11 machine.
@@ -82,12 +85,12 @@ Remove-Item -Path "C:\Users\$env:USERNAME\AppData\Local\npm-cache\*" -Recurse -F
 
 Measured in Seconds
 
-| CRA | Vite | Next.js | Remix |
-| --- | --- | --- | --- |
-| 60.077 | 13.097 | 29.752 | 54.121 |
-| 62.674 | 14.913 | 37.248 | 52.102 |
-| 54.945 | 11.878 | 25.835 | 82.327 |
-| 56.176 | 11.746 | 36.126 | 53.931 |
+| Framework | Test 1  | Test 2  | Test 3  | Test 4  | Average Time (s) |
+|-----------|---------|---------|---------|---------|------------------|
+| CRA       | 60.077  | 62.674  | 54.945  | 56.176  | 58.468           |
+| Vite      | 13.097  | 14.913  | 11.878  | 11.746  | 12.9085          |
+| Next.js   | 29.752  | 37.248  | 25.835  | 36.126  | 32.24025         |
+| Remix     | 54.121  | 52.102  | 82.327  | 53.931  | 60.62025         |
 
 NOTE: Times increase depending on number of people watching Instagram and TikTok videos
 on your home network.
@@ -107,12 +110,12 @@ Tested using:
 (Measure-Command { npm run build }).TotalMilliseconds
 ```
 
-| CRA | Vite | Next.js | Remix |
-| --- | --- | --- | --- |
-| 7.667 | 2.620 | 12.344 | 3.182 |
-| 6.800** | 2.602 | 12.310 | 3.187 |
-| 6.871** | 2.659 | 12.472 | 3.215 |
-| 6.742** | 2.687 | 12.312 | 3.298 |
+| Framework | Test 1  | Test 2  | Test 3  | Test 4  | Average Time (s) |
+|-----------|---------|---------|---------|---------|------------------|
+| CRA       | 7.667   | 6.800** | 6.871** | 6.742** | 7.020            |
+| Vite      | 2.620   | 2.602   | 2.659   | 2.687   | 2.642            |
+| Next.js   | 12.344  | 12.310  | 12.472  | 12.312  | 12.3595          |
+| Remix     | 3.182   | 3.187   | 3.215   | 3.298   | 3.2205           |
 
 ** I believe the CRAbuild caches some parts after the run,
 thus the first number being 1 sec longer.

@@ -9,8 +9,7 @@ Most projects use TypeScript to reduce type-related bugs,
 and SWC for ultra-fast live compilation and updates for improved developer experience.
 
 ```bash
-Syntax: npx create-react-app [project name]
-npx create-react-app plain
+npm create vite@latest
 ```
 
 Example output:
