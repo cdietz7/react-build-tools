@@ -52,3 +52,6 @@ found 0 vulnerabilities
 
 Vite Official Documentation
 https://vitejs.dev/guide/
+
+Building For Production (Static hosting service)
+https://vitejs.dev/guide/build

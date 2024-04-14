@@ -73,7 +73,7 @@ Remix
 Remove-Item -Path "C:\Users\$env:USERNAME\AppData\Local\npm-cache\*" -Recurse -Force
 (Measure-Command {
     echo "y" `
-    | npx create-remix@latest plain6 `
+    | npx create-remix@latest plain `
     --install `
     --git-init `
     --yes
@@ -97,20 +97,44 @@ on your home network.
 - CRA: 233 MB, 40,116 Files, 5,090 Folders
 - Vite: 124 MB, 3,755 Files, 402 Folders
 - Next.js: 294 MB, 17,197 Files, 1,841 Folders
-- Remix:
+- Remix: 174 MB, 17,375 Files, 2,238 Folders
 
 ## Build time for fresh project
 
+Tested using:
+
+```ps1
+(Measure-Command { npm run build }).TotalMilliseconds
+```
+
 | CRA | Vite | Next.js | Remix |
 | --- | --- | --- | --- |
-|  | 13.097 | 29.752 | 54.121 |
-|  | 14.913 | 37.248 | 52.102 |
-|  | 11.878 | 25.835 | 82.327 |
-|  | 11.746 | 36.126 | 53.931 |
+| 7.667 | 2.620 | 12.344 | 3.182 |
+| 6.800** | 2.602 | 12.310 | 3.187 |
+| 6.871** | 2.659 | 12.472 | 3.215 |
+| 6.742** | 2.687 | 12.312 | 3.298 |
+
+** I believe the CRAbuild caches some parts after the run,
+thus the first number being 1 sec longer.
+The first build also contained the error:
+
+```
+One of your dependencies, babel-preset-react-app, is importing the
+"@babel/plugin-proposal-private-property-in-object" package without
+declaring it in its dependencies. This is currently working because
+"@babel/plugin-proposal-private-property-in-object" is already in your
+node_modules folder for unrelated reasons, but it may break at any time.
+
+babel-preset-react-app is part of the create-react-app project, which
+is not maintianed anymore. It is thus unlikely that this bug will
+ever be fixed. Add "@babel/plugin-proposal-private-property-in-object" to
+your devDependencies to work around this error. This will make this message
+go away.
+```
 
 ## Build Folder Size
 
-- CRA:
-- Vite:
-- Next.js:
-- Remix:
+- CRA (/build): 544 KB, 15 Files, 4 Folders
+- Vite (/dist): 147 KB, 5 Files, 1 Folder
+- Next.js (.next): 29.5 MB, 96 Files, 25 Folders
+- Remix (build): 264 KB, 8 Files, 3 Folders
