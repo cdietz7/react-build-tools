@@ -57,9 +57,17 @@ found 0 vulnerabilities
 Success! Created my-plain-project at G:\Websites\react-build-tools\next-js\my-plain-project
 ```
 
-# Running
+# Running for Development
 
-Before running Next.js on localhost, build the project using `npm run build` in the project directory.
+Simply use the command in the project:
+
+```ps
+npm run dev
+```
+
+# Running for Production
+
+Before starting, build the project using `npm run build` in the project directory.
 If you dont, you may see something like...
 
 ```ps1
@@ -78,7 +86,7 @@ Error: Could not find a production build in the '.next' directory. Try building 
     at async Server.<anonymous> (G:\Websites\react-build-tools\next-js\plain2\node_modules\next\dist\server\lib\start-server.js:249:36)
 ```
 
-Once the project's built, run `npm run start`.
+Once the project's built, run `npm run start` in the production environment.
 
 # Resources
 
