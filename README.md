@@ -5,13 +5,15 @@ For Denver React meetup
 
 Comparisons were run on my local Windows 11 machine.
 
-Processor |	AMD Ryzen 7 3700X 8-Core Processor 3.60 GHz
-Installed RAM | 32.0 GB
-System type | 64-bit operating system, x64-based processor
-npx npm and cache folders stored on C: drive (SSD).
-    C:\Users\(Your User)\AppData\Local\npm-cache
-    C:\Users\(Your User)\AppData\Roaming\npm
-project files stored on G: drive (SSD).
+| spec | value |
+| --- | --- |
+| Processor | AMD Ryzen 7 3700X 8-Core Processor 3.60 GHz |
+| Installed RAM | 32.0 GB |
+| System type | 64-bit operating system, x64-based processor |
+| npx npm and cache folders storage | C: drive (SSD) |
+| cache | C:\Users\(Your User)\AppData\Local\npm-cache |
+| npm npx | C:\Users\(Your User)\AppData\Roaming\npm |
+| project files | G: drive (SSD). |
 
 Commands were measured using Windows PowerShell Measure-Command.
 
@@ -21,7 +23,8 @@ whether some parts of the build process need cached somehow.
 
 ## Base Installation Time for Development
 
-For our tests, the resulting project is a locally-runnable project.
+For our tests, the resulting project is a locally-runnable project
+(generally using `npm run dev`).
 Any further steps required to prepare a runnable project are included in the time.
 
 I used the following PowerShell command to time installations with no npm cache.
@@ -60,30 +63,54 @@ Remove-Item -Path "C:\Users\$env:USERNAME\AppData\Local\npm-cache\*" -Recurse -F
     --tailwind `
     --src-dir `
     --app `
-    --import-alias "@/*" `
-    && cd plain `
-    && npm run build
+    --import-alias "@/*"
 }).TotalMilliseconds
-cd ../
 ```
 
 Remix
 
-
-
+```ps1
+Remove-Item -Path "C:\Users\$env:USERNAME\AppData\Local\npm-cache\*" -Recurse -Force
+(Measure-Command {
+    echo "y" `
+    | npx create-remix@latest plain6 `
+    --install `
+    --git-init `
+    --yes
+}).TotalMilliseconds
+```
 
 Measured in Seconds
 
-| CRA | Vite | Next.js |
-| --- | --- | --- |
-| 60.077 | 13.097 | 43.945 |
-| 62.674 | 14.913 | 52.172 |
-| 54.945 | 11.878 | 55.098 |
-| 56.176 | 11.746 | 45.892 |
+| CRA | Vite | Next.js | Remix |
+| --- | --- | --- | --- |
+| 60.077 | 13.097 | 29.752 | 54.121 |
+| 62.674 | 14.913 | 37.248 | 52.102 |
+| 54.945 | 11.878 | 25.835 | 82.327 |
+| 56.176 | 11.746 | 36.126 | 53.931 |
+
+NOTE: Times increase depending on number of people watching Instagram and TikTok videos
+on your home network.
 
 ## Base Installation Storage Footprint
 
-CRA: 233 MB, 40,116 Files, 5,090 Folders
-Vite: 124 MB, 3,755 Files, 402 Folders
-Next.js: 322 MB, 17,287 Files, 1,867 Folders
-Remix:
+- CRA: 233 MB, 40,116 Files, 5,090 Folders
+- Vite: 124 MB, 3,755 Files, 402 Folders
+- Next.js: 294 MB, 17,197 Files, 1,841 Folders
+- Remix:
+
+## Build time for fresh project
+
+| CRA | Vite | Next.js | Remix |
+| --- | --- | --- | --- |
+|  | 13.097 | 29.752 | 54.121 |
+|  | 14.913 | 37.248 | 52.102 |
+|  | 11.878 | 25.835 | 82.327 |
+|  | 11.746 | 36.126 | 53.931 |
+
+## Build Folder Size
+
+- CRA:
+- Vite:
+- Next.js:
+- Remix:
