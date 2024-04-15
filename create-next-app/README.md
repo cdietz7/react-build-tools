@@ -6,7 +6,6 @@ For building Next.js apps. Officially supported by the Next.js team.
 Create a plain Next.js app
 
 ```bash
-Syntax: npx create-next-app@latest
 npx create-next-app@latest
 ```
 

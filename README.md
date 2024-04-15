@@ -159,3 +159,30 @@ When I deleted these folders, build time resumed in being ~19 seconds.
 - Remix (build): 264 KB, 8 Files, 3 Folders
 - Gatsby (.cache): 30.6 MB, 356 Files, 51 Folders
 - Gatsby (public): 1.10 MB, 33 Files, 10 Folders
+
+## Features Configurable During Interactive
+
+* Omitted CRA to focus on supported frameworks.
+
+| Feature                   | vite  | create-next-app | create-remix | gatsby |
+|---------------------------|-------|-----------------|--------------|--------|
+| App Router                | -     | Yes             | -            | -      |
+| Automatic sitemap         | -     | -               | -            | Yes    |
+| CMS Integration           | -     | -               | -            | Yes    |
+| ESLint                    | Auto  | Yes             | Auto         | -      |
+| Google gtag               | -     | -               | -            | Yes    |
+| Import alias customization| -     | Yes             | -            | -      |
+| Initialize git repo       | -     | -               | Yes          | -      |
+| Install dependencies      | -     | Auto            | Yes          | -      |
+| Markdown + MDX            | -     | -               | -            | Yes    |
+| Multiple CSS frameworks   | -     | -               | -            | Yes    |
+| Optional src/             | -     | Yes             | -            | -      |
+| Responsive images         | -     | -               | -            | Yes    |
+| SWC                       | Yes   | -               | -            | -      |
+| Tailwind CSS              | -     | Yes             | -            | Yes    |
+| TypeScript                | Yes   | Yes             | Auto         | Yes    |
+
+
+
+
+
