@@ -128,3 +128,6 @@ https://graphql.org/
 
 "The End Of My Gatsby Journey"
 https://www.smashingmagazine.com/2024/03/end-of-gatsby-journey/
+
+Matt Biilmann addresses future of Gatsby in github issue #38696
+https://github.com/gatsbyjs/gatsby/issues/38696#issuecomment-1817064739
