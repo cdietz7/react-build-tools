@@ -83,6 +83,16 @@ Remove-Item -Path "C:\Users\$env:USERNAME\AppData\Local\npm-cache\*" -Recurse -F
 }).TotalMilliseconds
 ```
 
+Gatsby
+
+```ps1
+Remove-Item -Path "C:\Users\$env:USERNAME\AppData\Local\npm-cache\*" -Recurse -Force
+(Measure-Command {
+    echo "y" `
+     | npx gatsby new plain4 https://github.com/gatsbyjs/gatsby-starter-minimal-ts
+}).TotalMilliseconds
+```
+
 Measured in Seconds
 
 | Framework | Test 1  | Test 2  | Test 3  | Test 4  | Average Time (s) |
@@ -91,6 +101,7 @@ Measured in Seconds
 | Vite      | 13.097  | 14.913  | 11.878  | 11.746  | 12.9085          |
 | Next.js   | 29.752  | 37.248  | 25.835  | 36.126  | 32.24025         |
 | Remix     | 54.121  | 52.102  | 82.327  | 53.931  | 60.62025         |
+| Gatsby    | 130.587 | 140.118 | 299.482 | 136.570 | 176.689          |
 
 NOTE: Times increase depending on number of people watching Instagram and TikTok videos
 on your home network.
@@ -101,6 +112,7 @@ on your home network.
 - Vite: 124 MB, 3,755 Files, 402 Folders
 - Next.js: 294 MB, 17,197 Files, 1,841 Folders
 - Remix: 174 MB, 17,375 Files, 2,238 Folders
+- Gatsby: 524 MB, 48,436 Files, 7,158 Folders
 
 ## Build time for fresh project
 
@@ -110,12 +122,13 @@ Tested using:
 (Measure-Command { npm run build }).TotalMilliseconds
 ```
 
-| Framework | Test 1  | Test 2  | Test 3  | Test 4  | Average Time (s) |
-|-----------|---------|---------|---------|---------|------------------|
-| CRA       | 7.667   | 6.800** | 6.871** | 6.742** | 7.020            |
-| Vite      | 2.620   | 2.602   | 2.659   | 2.687   | 2.642            |
-| Next.js   | 12.344  | 12.310  | 12.472  | 12.312  | 12.3595          |
-| Remix     | 3.182   | 3.187   | 3.215   | 3.298   | 3.2205           |
+| Framework | Test 1    | Test 2     | Test 3     | Test 4     | Average Time (s) |
+|-----------|-----------|------------|------------|------------|------------------|
+| CRA       | 7.667     | 6.800**    | 6.871**    | 6.742**    | 7.020            |
+| Vite      | 2.620     | 2.602      | 2.659      | 2.687      | 2.642            |
+| Next.js   | 12.344    | 12.310     | 12.472     | 12.312     | 12.3595          |
+| Remix     | 3.182     | 3.187      | 3.215      | 3.298      | 3.2205           |
+| Gatsby    | 19.881    | 10.120***  | 10.368***  | 10.249***  | 12.6545          |
 
 ** I believe the CRAbuild caches some parts after the run,
 thus the first number being 1 sec longer.
@@ -135,9 +148,14 @@ your devDependencies to work around this error. This will make this message
 go away.
 ```
 
+*** Gatsby caches the build in "public" and ".cache" folders.
+When I deleted these folders, build time resumed in being ~19 seconds.
+
 ## Build Folder Size
 
 - CRA (/build): 544 KB, 15 Files, 4 Folders
 - Vite (/dist): 147 KB, 5 Files, 1 Folder
 - Next.js (.next): 29.5 MB, 96 Files, 25 Folders
 - Remix (build): 264 KB, 8 Files, 3 Folders
+- Gatsby (.cache): 30.6 MB, 356 Files, 51 Folders
+- Gatsby (public): 1.10 MB, 33 Files, 10 Folders
