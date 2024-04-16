@@ -91,3 +91,9 @@ Once the project's built, run `npm run start` in the production environment.
 
 create-next-app parameters:
 https://nextjs.org/docs/app/api-reference/create-next-app
+
+Webpack 5 Adoption
+https://nextjs.org/docs/messages/webpack5
+
+Image Optimization
+https://nextjs.org/docs/app/building-your-application/optimizing/images

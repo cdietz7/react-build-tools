@@ -110,3 +110,9 @@ npm run start
 Remix Official Docs - Quick Start
 https://remix.run/docs/en/main/start/quickstart
 
+Remix vs. Next (written by Remix)
+https://remix.run/blog/remix-vs-next
+
+"Remix is starting to excite me" by Theo - t3.gg
+https://www.youtube.com/watch?v=ECr_5J_TlAs
+
